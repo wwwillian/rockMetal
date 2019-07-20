@@ -11,7 +11,7 @@ module.exports={
     },
 
     async store(req, res){
-        const {author, place, description, hashtags} = req.body;
+        const {band, date, hora, description, address, place, hashtags} = req.body;
         const {filename: image} = req.file;
 
         const [name] = image.split('.');
@@ -27,9 +27,12 @@ module.exports={
         fs.unlinkSync(req.file.path);
 
         const post = await Post.create({
-            author,
-            place,
+            band,
+            date,
+            hora,
             description,
+            address,
+            place,
             hashtags,
             image: fileName,
         });

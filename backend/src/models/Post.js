@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    author: String,
-    place: String,
+    band: String,
+    date: Date,
+    hora: String,
     description: String,
+    address: String,
+    place: String,
     hashtags: String,
     image: String,
     likes: {

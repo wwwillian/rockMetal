@@ -1,0 +1,26 @@
+header#main-header{
+    background: #ffffff;
+    height: 100px;
+    border-bottom: 1px solid #DDD;
+    font-size: 3em;
+}
+header#main-header .header-content{
+    font-family: 'Butcherman', cursive;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    height: 72px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+}
+ul{
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.5em;
+    list-style-type: none;
+}
+li a{
+    color:#000000;
+    text-decoration: none;
+}

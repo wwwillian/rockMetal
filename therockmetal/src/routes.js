@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import Calendar from './pages/Calendar';
-import Form from './pages/Form';
+import Home from './pages/Home/Home';
+import Calendar from './pages/Calendar/Calendar';
+import Form from './pages/Form/Form';
 
 function Routes(){
     return (

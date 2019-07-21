@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import io from 'socket.io-client';
 
 import more from '../../assets/more.svg';
 
@@ -10,12 +11,29 @@ class Home extends Component {
     home: [],
   };
   async componentDidMount(){
-  const response = await api.get('posts');
+    this.registerToSocket();
   
-  this.setState({ home: response.data })
+    const response = await api.get('posts');
+  
+    this.setState({ home: response.data })
+} 
+registerToSocket = () => {
+  const socket = io('http://localhost:3333');
+
+  socket.on('post', newPost =>{
+    this.setState({ home: [newPost, ...this.state.home] })
+  })
+
+  socket.on('like', likedPost => {
+    this.setState({
+      home: this.state.home.map(post =>
+        post._id === likedPost._id ? likedPost : post
+      )
+    })
+  })
 }
 handleLike = id => {
-  api.post(`/post/${id}/like`);
+  api.post(`/posts/${id}/like`);
 }
   render() {
     return (
@@ -34,11 +52,11 @@ handleLike = id => {
               <img src={ `http://localhost:3333/files/${ post.image }` } alt="" />
               <footer>
                 <div className="actions">
-                  <button type="button" onClick={() => this.handleLike(post._id)}>
+                  <button type="button" onClick={ () => this.handleLike(post._id) }>
                     Confirmar presença!
                   </button>
                 </div>
-                <strong>{ post.likes } confimaram presença no evento!</strong> 
+                <strong>{ post.likes } pessoas confimaram presença no evento!</strong> 
                 <p>
                   { post.description }
                   <span>{ post.hashtags }</span>

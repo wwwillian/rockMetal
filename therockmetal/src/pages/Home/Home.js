@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 import io from 'socket.io-client';
 
+
 import more from '../../assets/more.svg';
 
 import './Home.css';
@@ -16,12 +17,12 @@ class Home extends Component {
     const response = await api.get('posts');
   
     this.setState({ home: response.data })
-} 
-registerToSocket = () => {
-  const socket = io('http://localhost:3333');
+  } 
+  registerToSocket = () => {
+    const socket = io('http://localhost:3333');
 
-  socket.on('post', newPost =>{
-    this.setState({ home: [newPost, ...this.state.home] })
+    socket.on('post', newPost =>{
+      this.setState({ home: [newPost, ...this.state.home] })
   })
 
   socket.on('like', likedPost => {
@@ -43,7 +44,7 @@ handleLike = id => {
               <header>
                 <div className="user-info">
                   <strong>{ post.band }</strong>
-                  <span>{ post.date }</span>
+                  <span>{ post.date } { post.hours }</span>
                   <span>{ post.address }</span>
                   <span className="place">{ post.place }</span>
                 </div>
@@ -56,11 +57,10 @@ handleLike = id => {
                     Confirmar presença!
                   </button>
                 </div>
-                <strong>{ post.likes } pessoas confimaram presença no evento!</strong> 
-                <p>
+                <p>{ post.likes } pessoas confimaram presença no evento!</p> 
+                <strong>
                   { post.description }
-                  <span>{ post.hashtags }</span>
-                </p>
+                </strong>
               </footer>
             </article>
         )) }

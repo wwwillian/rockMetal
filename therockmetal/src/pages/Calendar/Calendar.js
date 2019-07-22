@@ -1,12 +1,19 @@
 import React, { Component } from "react";
+import Calendars from 'react-calendar';
+import Conteudo from './Conteudo';
 
 import './Calendar.css';
 
 class Calendar extends Component {
   render() {
     return (
-            <h1>Calendar</h1>
-        );
+      <div>
+        <div className="calendario">
+          <Calendars />
+        </div>
+          <Conteudo />
+      </div>
+    );
   }
 }
 

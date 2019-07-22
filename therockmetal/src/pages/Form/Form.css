@@ -15,7 +15,8 @@ form#new-post {
   }
   
   form#new-post input[type=text], 
-  form#new-post input[type=date]{
+  form#new-post input[type=date],
+  form#new-post input[type=time]{
     height: 38px;
     border-radius: 4px;
     border: 1px solid #ddd;

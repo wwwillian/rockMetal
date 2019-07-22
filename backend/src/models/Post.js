@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
     band: String,
-    date: Date,
-    hora: String,
+    date: String,
+    hours: String,
     description: String,
     address: String,
     place: String,

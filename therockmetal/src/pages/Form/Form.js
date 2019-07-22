@@ -8,6 +8,7 @@ class Form extends Component {
     image: null,
     band: '',
     date: '',
+    hours: '',
     address: '',
     place: '',
     description: '',
@@ -21,6 +22,7 @@ class Form extends Component {
     data.append('image', this.state.image);
     data.append('band', this.state.band);
     data.append('date', this.state.date);
+    data.append('hours', this.state.hours);
     data.append('description', this.state.description);
     data.append('address', this.state.address);
     data.append('place', this.state.place);
@@ -54,6 +56,12 @@ class Form extends Component {
           value={ this.state.date }
         />
         <input 
+          type="time" 
+          name="hours"
+          onChange={ this.handleChange } 
+          value={ this.state.hours }
+        />
+        <input 
           type="text" 
           name="address" 
           placeholder="Local do Show" 
@@ -73,13 +81,6 @@ class Form extends Component {
           placeholder="Descrição" 
           onChange={ this.handleChange } 
           value={ this.state.description }
-        />
-        <input 
-          type="text" 
-          name="hashtags" 
-          placeholder="Hashtags" 
-          onChange={ this.handleChange } 
-          value={ this.state.hashtags }
         />
         <button type="submit">Enviar</button>
       </form>

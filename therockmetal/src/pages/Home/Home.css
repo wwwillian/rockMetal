@@ -6,7 +6,7 @@ section#post-list {
 }
 section#post-list article{
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #000;
     margin-top: 30px;
 }
 section#post-list article header{
